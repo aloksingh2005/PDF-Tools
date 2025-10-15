@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Tools Collection</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #64748b;
+            --accent-color: #eef2ff;
+            --success-color: #10b981;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #eef2ff 0%, #c7d2fe 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #312e81;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: var(--secondary-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .tool-icon {
+            background: var(--accent-color);
+            padding: 25px;
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--primary-color);
+        }
+
+        .tool-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-content h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .tool-content p {
+            color: var(--secondary-color);
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .tool-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: background 0.3s;
+            text-align: center;
+        }
+
+        .tool-link:hover {
+            background: #4f46e5;
+        }
+
+        .category {
+            margin: 30px 0 20px;
+        }
+
+        .category h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: var(--secondary-color);
+            border-top: 1px solid #e2e8f0;
+        }
+
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            header h1 {
+                font-size: 2em;
+            }
+            
+            header p {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-toolbox"></i> PDF Tools Collection</h1>
+            <p>A comprehensive suite of browser-based PDF manipulation tools. All processing happens locally in your browser - your files never leave your computer!</p>
+        </header>
+
+        <div class="category">
+            <h2><i class="fas fa-exchange-alt"></i> Conversion Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card" onclick="window.location.href='images_to_pdf.html'">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Images to PDF</h3>
+                        <p>Convert JPG/PNG images to a multi-page PDF document. Drag, drop, reorder, and convert!</p>
+                        <a href="images_to_pdf.html" class="tool-link">Open Tool</a>
+                    </div>
+                </div>
+
+                <div class="tool-card" onclick="window.location.href='pdf_to_image.html'">
+                    <div class="tool-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>PDF to Images</h3>
+                        <p>Extract pages from PDF files as PNG/JPG images. Download all images in a ZIP file.</p>
+                        <a href="pdf_to_image.html" class="tool-link">Open Tool</a>
+                    </div>
+                </div>
+
+                <div class="tool-card" onclick="window.location.href='pdf_to_file.html'">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>PDF to Text/Word</h3>
+                        <p>Extract text content from PDF files. Save as plain text or basic Word documents.</p>
+                        <a href="pdf_to_file.html" class="tool-link">Open Tool</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2><i class="fas fa-edit"></i> Editing Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card" onclick="window.location.href='merge_pdfs.html'">
+                    <div class="tool-icon">
+                        <i class="fas fa-object-union"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Merge PDFs</h3>
+                        <p>Combine multiple PDF files into a single document. Drag and drop to reorder files.</p>
+                        <a href="merge_pdfs.html" class="tool-link">Open Tool</a>
+                    </div>
+                </div>
+
+                <div class="tool-card" onclick="window.location.href='split_pdf.html'">
+                    <div class="tool-icon">
+                        <i class="fas fa-scissors"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Split PDF</h3>
+                        <p>Divide a PDF file into multiple smaller documents. Extract specific page ranges.</p>
+                        <a href="split_pdf.html" class="tool-link">Open Tool</a>
+                    </div>
+                </div>
+
+                <div class="tool-card" onclick="window.location.href='rearrange_pdf.html'">
+                    <div class="tool-icon">
+                        <i class="fas fa-sort"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Rearrange Pages</h3>
+                        <p>Reorder pages within a PDF document using drag and drop interface.</p>
+                        <a href="rearrange_pdf.html" class="tool-link">Open Tool</a>
+                    </div>
+                </div>
+
+                <div class="tool-card" onclick="window.location.href='remove_pdf.html'">
+                    <div class="tool-icon">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Remove Pages</h3>
+                        <p>Delete specific pages from a PDF document. Select pages to remove.</p>
+                        <a href="remove_pdf.html" class="tool-link">Open Tool</a>
+                    </div>
+                </div>
+
+                <div class="tool-card" onclick="window.location.href='rotate_pdf.html'">
+                    <div class="tool-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Rotate PDF</h3>
+                        <p>Rotate pages in a PDF document. Supports 90, 180, and 270 degree rotations.</p>
+                        <a href="rotate_pdf.html" class="tool-link">Open Tool</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2><i class="fas fa-shield-alt"></i> Protection Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card" onclick="window.location.href='add_watermark.html'">
+                    <div class="tool-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Add Watermark</h3>
+                        <p>Add text or image watermarks to protect your PDF documents.</p>
+                        <a href="add_watermark.html" class="tool-link">Open Tool</a>
+                    </div>
+                </div>
+
+                <div class="tool-card" onclick="window.location.href='compress_pdf.html'">
+                    <div class="tool-icon">
+                        <i class="fas fa-compress-alt"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Compress PDF</h3>
+                        <p>Reduce the file size of PDF documents while maintaining quality.</p>
+                        <a href="compress_pdf.html" class="tool-link">Open Tool</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>All tools process files locally in your browser - your documents never leave your computer!</p>
+            <p>© 2025 PDF Tools Collection</p>
+        </footer>
+    </div>
+</body>
+</html>
