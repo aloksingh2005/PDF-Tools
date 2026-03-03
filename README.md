@@ -1,6 +1,6 @@
 # PDF Tools Collection
 
-A comprehensive suite of browser-based PDF manipulation tools that allow you to convert, edit, protect, and optimize PDF documents. All processing happens locally in your browser - your files never leave your computer!
+A comprehensive suite of 17 browser-based PDF manipulation tools that allow you to convert, edit, protect, and optimize PDF documents. All processing happens locally in your browser - your files never leave your computer!
 
 ## Table of Contents
 - [Available Tools](#available-tools)
@@ -16,19 +16,28 @@ A comprehensive suite of browser-based PDF manipulation tools that allow you to 
 
 ### 🔁 Conversion Tools
 - **[Images to PDF](images_to_pdf.html)** - Convert JPG/PNG images to a multi-page PDF document with drag-and-drop support
-- **[PDF to Images](pdf_to_images.html)** - Extract pages from PDF files as PNG/JPG images with batch download
+- **[PDF to Images](pdf_to_image.html)** - Extract pages from PDF files as PNG/JPG images with batch download
 - **[PDF to Text/Word](pdf_to_file.html)** - Extract text content from PDF files and save as plain text or basic Word documents
+- **[HTML to PDF](html_to_pdf.html)** - Convert HTML content to PDF documents with full CSS styling support
 
 ### ✂️ Editing Tools
 - **[Merge PDFs](merge_pdfs.html)** - Combine multiple PDF files into a single document with drag-and-drop reordering
 - **[Split PDF](split_pdf.html)** - Divide a PDF file into multiple smaller documents by page ranges
+- **[Extract Pages](extract_pages.html)** - Select and extract specific pages (including non-consecutive pages) from a PDF
 - **[Rearrange Pages](rearrange_pdf.html)** - Reorder pages within a PDF document using an intuitive drag-and-drop interface
 - **[Remove Pages](remove_pdf.html)** - Delete specific pages from a PDF document
 - **[Rotate PDF](rotate_pdf.html)** - Rotate pages in a PDF document (90°, 180°, 270°)
 
-### 🛡️ Protection Tools
+### 🛡️ Protection & Security Tools
 - **[Add Watermark](add_watermark.html)** - Add text or image watermarks to protect your PDF documents
 - **[Compress PDF](compress_pdf.html)** - Reduce the file size of PDF documents while maintaining quality
+- **[Protect PDF](protect_pdf.html)** - Add password protection and set permissions to secure your PDF files
+- **[Unlock PDF](unlock_pdf.html)** - Remove password protection from PDF files you have permission to unlock
+
+### ✨ Advanced Tools
+- **[Sign PDF](sign_pdf.html)** - Add your digital signature to PDFs by drawing or typing
+- **[Add Page Numbers](add_page_numbers.html)** - Add customizable page numbering with various formats and positions
+- **[Edit Metadata](edit_metadata.html)** - Edit PDF document properties (title, author, subject, keywords, dates)
 
 ## How to Use
 
@@ -107,6 +116,7 @@ A comprehensive suite of browser-based PDF manipulation tools that allow you to 
 - **[pdf-lib](https://pdf-lib.js.org/)** - PDF creation and manipulation
 - **[PDF.js](https://mozilla.github.io/pdf.js/)** - PDF rendering and text extraction
 - **[JSZip](https://stuk.github.io/jszip/)** - ZIP file creation for batch downloads
+- **[html2pdf.js](https://github.com/eKoopmans/html2pdf.js)** - HTML to PDF conversion
 
 ### Utilities
 - **FileSaver.js** - Client-side file saving
@@ -115,17 +125,33 @@ A comprehensive suite of browser-based PDF manipulation tools that allow you to 
 
 ```
 merge_pdf/
-├── index.html              # Main landing page
+├── index.html              # Main landing page with all tools
+│
+├── Conversion Tools:
 ├── images_to_pdf.html      # Convert images to PDF
-├── pdf_to_images.html      # Convert PDF to images
+├── pdf_to_image.html       # Convert PDF to images
 ├── pdf_to_file.html        # Extract text from PDF
+├── html_to_pdf.html        # Convert HTML to PDF
+│
+├── Editing Tools:
 ├── merge_pdfs.html         # Combine multiple PDFs
 ├── split_pdf.html          # Split PDF into parts
+├── extract_pages.html      # Extract specific pages
 ├── rearrange_pdf.html      # Reorder PDF pages
 ├── remove_pdf.html         # Delete pages from PDF
 ├── rotate_pdf.html         # Rotate PDF pages
+│
+├── Protection & Security:
 ├── compress_pdf.html       # Reduce PDF file size
 ├── add_watermark.html      # Add watermarks to PDF
+├── protect_pdf.html        # Password protect PDF
+├── unlock_pdf.html         # Remove PDF password
+│
+├── Advanced Tools:
+├── sign_pdf.html           # Add digital signatures
+├── add_page_numbers.html   # Add page numbering
+├── edit_metadata.html      # Edit PDF properties
+│
 └── README.md               # This documentation
 ```
 
