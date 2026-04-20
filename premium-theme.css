@@ -20,6 +20,9 @@ body.premium-ui {
     color: var(--premium-ink) !important;
     position: relative;
     overflow-x: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh;
     background:
         radial-gradient(1200px 480px at 5% -8%, rgba(14, 165, 233, 0.22), transparent 60%),
         radial-gradient(1200px 520px at 100% 0%, rgba(20, 184, 166, 0.2), transparent 55%),
@@ -57,7 +60,11 @@ body.premium-ui > * {
 }
 
 body.premium-ui .container {
-    border-radius: 24px !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    min-height: 100vh;
+    border-radius: 0 !important;
     border: 1px solid rgba(255, 255, 255, 0.85);
     box-shadow: var(--premium-shadow) !important;
     backdrop-filter: blur(10px);
@@ -235,6 +242,6 @@ body.premium-ui .back-button:hover {
     }
 
     body.premium-ui .container {
-        border-radius: 18px !important;
+        border-radius: 0 !important;
     }
 }
