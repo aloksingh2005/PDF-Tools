@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Converter Pro</title>
+    <title>Extract Text from PDF</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-    <script src="https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -255,13 +254,14 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="premium-theme.css">
 </head>
 
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-file-contract"></i> PDF Converter Pro</h1>
-            <p>Convert PDF to Images, Text, Word, Excel & PowerPoint – All in one tool!</p>
+            <h1><i class="fas fa-file-lines"></i> Extract Text from PDF</h1>
+            <p>Convert PDF pages into plain text or Word-compatible RTF format in your browser.</p>
         </header>
 
         <div class="content">
@@ -269,7 +269,7 @@
                 <div id="dropZone">
                     <i class="fas fa-cloud-upload-alt"></i>
                     <span>Drop your PDF here or click to browse</span>
-                    <small>Supports all PDF files – Convert to multiple formats!</small>
+                    <small>No upload needed. Text is extracted locally and kept private.</small>
                     <div id="fileName"></div>
                 </div>
             </label>
@@ -277,44 +277,9 @@
 
             <div id="info"></div>
 
-            <!-- Image Conversion Section -->
-            <div class="conversion-section">
-                <h3><i class="fas fa-images"></i> Convert to Images</h3>
-                <div class="radio-group">
-                    <label>
-                        <input type="radio" name="imageFormat" value="png" checked>
-                        <span>PNG (High Quality with Transparency)</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="imageFormat" value="jpeg">
-                        <span>JPEG (Smaller File Size)</span>
-                    </label>
-                </div>
-                
-                <label>Image Quality (JPEG only):</label>
-                <select id="jpegQuality">
-                    <option value="0.95">High Quality (95%)</option>
-                    <option value="0.9" selected>Good Quality (90%)</option>
-                    <option value="0.85">Medium Quality (85%)</option>
-                    <option value="0.8">Low Quality (80%)</option>
-                </select>
-                
-                <label>Resolution Scale:</label>
-                <select id="scale">
-                    <option value="1">Normal (1x)</option>
-                    <option value="2" selected>High (2x)</option>
-                    <option value="3">Very High (3x)</option>
-                    <option value="4">Ultra High (4x)</option>
-                </select>
-                
-                <button id="imageConvertBtn" onclick="convertToImages()" disabled>
-                    <i class="fas fa-file-image"></i> CONVERT TO IMAGES (ZIP)
-                </button>
-            </div>
-
             <!-- Text/Document Conversion Section -->
             <div class="conversion-section">
-                <h3><i class="fas fa-file-alt"></i> Convert to Text/Documents</h3>
+                <h3><i class="fas fa-file-alt"></i> Text Extraction Options</h3>
                 <div class="radio-group">
                     <label>
                         <input type="radio" name="textFormat" value="txt" checked>
@@ -322,35 +287,18 @@
                     </label>
                     <label>
                         <input type="radio" name="textFormat" value="doc">
-                        <span>Word Document (.doc) - Basic</span>
+                        <span>RTF Document (.rtf) - Word Compatible</span>
                     </label>
                 </div>
                 
                 <div class="note">
-                    <h4><i class="fas fa-info-circle"></i> Note about Office Formats</h4>
-                    <p>Full PDF to Word/Excel/PowerPoint conversion requires advanced server-side processing. 
-                    This tool extracts text that can be saved as basic Word documents. 
-                    For complete formatting preservation, use specialized online services.</p>
+                    <h4><i class="fas fa-info-circle"></i> Text Extraction Mode</h4>
+                    <p>This tool extracts the readable text layer from PDF pages. Visual layout and advanced formatting are not preserved.</p>
                 </div>
                 
                 <button id="textConvertBtn" onclick="convertToText()" disabled>
-                    <i class="fas fa-file-export"></i> EXTRACT TEXT/DOCUMENT
+                    <i class="fas fa-file-export"></i> EXTRACT TEXT
                 </button>
-            </div>
-
-            <!-- Office Conversion Section -->
-            <div class="conversion-section">
-                <h3><i class="fas fa-file-powerpoint"></i> Advanced Office Conversion</h3>
-                <div class="note">
-                    <h4><i class="fas fa-exclamation-triangle"></i> Advanced Conversion Required</h4>
-                    <p>Converting PDF to fully editable Word, Excel, or PowerPoint files with preserved 
-                    formatting requires specialized software. Here are recommended online services:</p>
-                    <ul>
-                        <li><strong>Word:</strong> Adobe Acrobat Online, Smallpdf, ILovePDF</li>
-                        <li><strong>Excel:</strong> PDF to Excel converters (online tools)</li>
-                        <li><strong>PowerPoint:</strong> PDF to PPT converters (online tools)</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
@@ -362,7 +310,6 @@
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('fileInput');
         const info = document.getElementById('info');
-        const imageConvertBtn = document.getElementById('imageConvertBtn');
         const textConvertBtn = document.getElementById('textConvertBtn');
         const fileNameDiv = document.getElementById('fileName');
 
@@ -401,77 +348,14 @@
                 pdfDoc = await pdfjsLib.getDocument(arrayBuffer).promise;
                 info.innerHTML = `<i class="fas fa-check"></i> Loaded PDF with ${pdfDoc.numPages} pages!`;
                 info.className = 'success';
-                imageConvertBtn.disabled = false;
                 textConvertBtn.disabled = false;
             } catch (e) {
                 info.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Couldn't load PDF: ${e.message}`;
                 info.className = 'error';
-                imageConvertBtn.disabled = true;
                 textConvertBtn.disabled = true;
                 pdfDoc = null;
             } finally {
                 dropZone.querySelector('span').textContent = 'Drop your PDF here or click to browse';
-            }
-        }
-
-        async function convertToImages() {
-            if (!pdfDoc) {
-                info.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Select a PDF first!';
-                info.className = 'error';
-                return;
-            }
-
-            const format = document.querySelector('input[name="imageFormat"]:checked').value;
-            const quality = parseFloat(document.getElementById('jpegQuality').value);
-            const scale = parseFloat(document.getElementById('scale').value);
-
-            imageConvertBtn.disabled = true;
-            imageConvertBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Converting to Images...';
-            info.textContent = 'Converting PDF pages to images...';
-            info.className = '';
-
-            try {
-                const zip = new JSZip();
-                const numPages = pdfDoc.numPages;
-
-                for (let pageNum = 1; pageNum <= numPages; pageNum++) {
-                    const page = await pdfDoc.getPage(pageNum);
-                    const viewport = page.getViewport({ scale });
-                    const canvas = document.createElement('canvas');
-                    const context = canvas.getContext('2d');
-                    canvas.height = viewport.height;
-                    canvas.width = viewport.width;
-
-                    await page.render({ canvasContext: context, viewport }).promise;
-
-                    let imgData;
-                    if (format === 'jpeg') {
-                        imgData = canvas.toDataURL('image/jpeg', quality);
-                    } else {
-                        imgData = canvas.toDataURL('image/png');
-                    }
-
-                    const base64Data = imgData.replace(/^data:image\/\w+;base64,/, '');
-                    const binary = atob(base64Data);
-                    const array = new Uint8Array(binary.length);
-                    for (let i = 0; i < binary.length; i++) {
-                        array[i] = binary.charCodeAt(i);
-                    }
-                    
-                    const extension = format === 'jpeg' ? 'jpg' : 'png';
-                    zip.file(`page_${pageNum.toString().padStart(3, '0')}.${extension}`, array);
-                }
-
-                const zipBlob = await zip.generateAsync({ type: 'blob' });
-                saveAs(zipBlob, `pdf_images_${Date.now()}.zip`);
-                info.innerHTML = `<i class="fas fa-check-circle"></i> Success! Converted ${numPages} pages to ${format.toUpperCase()} images in ZIP.`;
-                info.className = 'success';
-            } catch (e) {
-                info.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Image conversion failed: ${e.message}`;
-                info.className = 'error';
-            } finally {
-                imageConvertBtn.disabled = false;
-                imageConvertBtn.innerHTML = '<i class="fas fa-file-image"></i> CONVERT TO IMAGES (ZIP)';
             }
         }
 
@@ -519,14 +403,14 @@
                 info.className = 'error';
             } finally {
                 textConvertBtn.disabled = false;
-                textConvertBtn.innerHTML = '<i class="fas fa-file-export"></i> EXTRACT TEXT/DOCUMENT';
+                textConvertBtn.innerHTML = '<i class="fas fa-file-export"></i> EXTRACT TEXT';
             }
         }
 
         // Initial state
-        imageConvertBtn.disabled = true;
         textConvertBtn.disabled = true;
     </script>
+    <script src="premium-ui.js"></script>
 </body>
 
 </html>

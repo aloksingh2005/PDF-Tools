@@ -17,7 +17,7 @@ A comprehensive suite of 17 browser-based PDF manipulation tools that allow you 
 ### 🔁 Conversion Tools
 - **[Images to PDF](images_to_pdf.html)** - Convert JPG/PNG images to a multi-page PDF document with drag-and-drop support
 - **[PDF to Images](pdf_to_image.html)** - Extract pages from PDF files as PNG/JPG images with batch download
-- **[PDF to Text/Word](pdf_to_file.html)** - Extract text content from PDF files and save as plain text or basic Word documents
+- **[Extract Text from PDF](pdf_to_file.html)** - Extract text content from PDF files and save as plain text or Word-compatible RTF
 - **[HTML to PDF](html_to_pdf.html)** - Convert HTML content to PDF documents with full CSS styling support
 
 ### ✂️ Editing Tools
@@ -28,16 +28,16 @@ A comprehensive suite of 17 browser-based PDF manipulation tools that allow you 
 - **[Remove Pages](remove_pdf.html)** - Delete specific pages from a PDF document
 - **[Rotate PDF](rotate_pdf.html)** - Rotate pages in a PDF document (90°, 180°, 270°)
 
-### 🛡️ Protection & Security Tools
+### 🛡️ Security & Optimization Tools
 - **[Add Watermark](add_watermark.html)** - Add text or image watermarks to protect your PDF documents
 - **[Compress PDF](compress_pdf.html)** - Reduce the file size of PDF documents while maintaining quality
-- **[Protect PDF](protect_pdf.html)** - Add password protection and set permissions to secure your PDF files
 - **[Unlock PDF](unlock_pdf.html)** - Remove password protection from PDF files you have permission to unlock
 
 ### ✨ Advanced Tools
 - **[Sign PDF](sign_pdf.html)** - Add your digital signature to PDFs by drawing or typing
 - **[Add Page Numbers](add_page_numbers.html)** - Add customizable page numbering with various formats and positions
 - **[Edit Metadata](edit_metadata.html)** - Edit PDF document properties (title, author, subject, keywords, dates)
+- **[PDF Insights](pdf_info.html)** - Inspect PDF metadata, page dimensions, and useful document statistics
 
 ## How to Use
 
@@ -124,7 +124,7 @@ A comprehensive suite of 17 browser-based PDF manipulation tools that allow you 
 ## File Structure
 
 ```
-merge_pdf/
+PDF-Tools/
 ├── index.html              # Main landing page with all tools
 │
 ├── Conversion Tools:
@@ -141,16 +141,18 @@ merge_pdf/
 ├── remove_pdf.html         # Delete pages from PDF
 ├── rotate_pdf.html         # Rotate PDF pages
 │
-├── Protection & Security:
+├── Security & Optimization:
 ├── compress_pdf.html       # Reduce PDF file size
 ├── add_watermark.html      # Add watermarks to PDF
-├── protect_pdf.html        # Password protect PDF
 ├── unlock_pdf.html         # Remove PDF password
 │
 ├── Advanced Tools:
 ├── sign_pdf.html           # Add digital signatures
 ├── add_page_numbers.html   # Add page numbering
 ├── edit_metadata.html      # Edit PDF properties
+├── pdf_info.html           # Show metadata and document insights
+├── premium-theme.css       # Shared premium UI theme
+├── premium-ui.js           # Shared UI behavior enhancements
 │
 └── README.md               # This documentation
 ```

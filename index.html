@@ -166,12 +166,13 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="premium-theme.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-toolbox"></i> PDF Tools Collection</h1>
-            <p>A comprehensive suite of browser-based PDF manipulation tools. All processing happens locally in your browser - your files never leave your computer!</p>
+            <h1><i class="fas fa-swatchbook"></i> PDF Studio Suite</h1>
+            <p>Premium browser-based PDF workflows with local-first privacy. Every conversion and edit runs on your device, not on a server.</p>
         </header>
 
         <div class="category">
@@ -204,8 +205,8 @@
                         <i class="fas fa-file-alt"></i>
                     </div>
                     <div class="tool-content">
-                        <h3>PDF to Text/Word</h3>
-                        <p>Extract text content from PDF files. Save as plain text or basic Word documents.</p>
+                        <h3>Extract Text from PDF</h3>
+                        <p>Extract readable text from PDF pages and export as TXT or Word-compatible RTF files.</p>
                         <a href="pdf_to_file.html" class="tool-link">Open Tool</a>
                     </div>
                 </div>
@@ -273,7 +274,7 @@
         </div>
 
         <div class="category">
-            <h2><i class="fas fa-shield-alt"></i> Protection & Security Tools</h2>
+            <h2><i class="fas fa-shield-alt"></i> Security & Optimization Tools</h2>
             <div class="tools-grid">
                 <div class="tool-card" onclick="window.location.href='add_watermark.html'">
                     <div class="tool-icon">
@@ -294,17 +295,6 @@
                         <h3>Compress PDF</h3>
                         <p>Reduce the file size of PDF documents while maintaining quality.</p>
                         <a href="compress_pdf.html" class="tool-link">Open Tool</a>
-                    </div>
-                </div>
-
-                <div class="tool-card" onclick="window.location.href='protect_pdf.html'">
-                    <div class="tool-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <div class="tool-content">
-                        <h3>Protect PDF</h3>
-                        <p>Add password protection and set permissions to secure your PDF files.</p>
-                        <a href="protect_pdf.html" class="tool-link">Open Tool</a>
                     </div>
                 </div>
 
@@ -378,6 +368,17 @@
                         <a href="html_to_pdf.html" class="tool-link">Open Tool</a>
                     </div>
                 </div>
+
+                <div class="tool-card" onclick="window.location.href='pdf_info.html'">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>PDF Insights</h3>
+                        <p>Inspect metadata, dimensions, page statistics, and document properties in one click.</p>
+                        <a href="pdf_info.html" class="tool-link">Open Tool</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -386,5 +387,6 @@
             <p>© 2025 PDF Tools Collection | <strong>17 Professional PDF Tools</strong></p>
         </footer>
     </div>
+    <script src="premium-ui.js"></script>
 </body>
 </html>

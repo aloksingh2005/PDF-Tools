@@ -63,41 +63,6 @@
             padding: 30px;
         }
 
-        .tab-container {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .tab {
-            padding: 12px 24px;
-            cursor: pointer;
-            border: none;
-            background: none;
-            color: var(--secondary-color);
-            font-weight: 600;
-            transition: all 0.3s;
-            border-bottom: 3px solid transparent;
-        }
-
-        .tab:hover {
-            color: var(--primary-color);
-        }
-
-        .tab.active {
-            color: var(--primary-color);
-            border-bottom-color: var(--primary-color);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
         label {
             display: block;
             font-weight: 600;
@@ -122,8 +87,7 @@
             border-color: var(--primary-color);
         }
 
-        input[type="text"],
-        input[type="url"] {
+        input[type="text"] {
             width: 100%;
             padding: 12px;
             border: 2px solid #e2e8f0;
@@ -280,6 +244,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="premium-theme.css">
 </head>
 
 <body>
@@ -289,25 +254,15 @@
                 <i class="fas fa-arrow-left"></i> Back to Tools
             </a>
             <h1><i class="fas fa-file-code"></i> HTML to PDF</h1>
-            <p>Convert HTML content to PDF documents</p>
+            <p>Convert HTML snippets and templates into polished PDFs - fully client side</p>
         </header>
 
         <div class="content">
-            <div class="tab-container">
-                <button class="tab active" data-tab="html">
-                    <i class="fas fa-code"></i> HTML Code
-                </button>
-                <button class="tab" data-tab="url">
-                    <i class="fas fa-link"></i> From URL
-                </button>
-            </div>
-
             <div id="status"></div>
 
-            <!-- HTML Code Tab -->
-            <div class="tab-content active" id="htmlTab">
+            <div id="htmlTab">
                 <div class="info-box">
-                    <p><i class="fas fa-lightbulb"></i> Paste your HTML code below and convert it to a PDF document. Inline CSS supported!</p>
+                    <p><i class="fas fa-lightbulb"></i> Paste your HTML and convert instantly. URL scraping mode was removed for reliability and privacy.</p>
                 </div>
 
                 <div class="sample-templates">
@@ -380,54 +335,10 @@
                     Convert to PDF
                 </button>
             </div>
-
-            <!-- URL Tab -->
-            <div class="tab-content" id="urlTab">
-                <div class="info-box">
-                    <p><i class="fas fa-info-circle"></i> Note: Due to browser security restrictions (CORS), converting external URLs may not work for all websites.</p>
-                </div>
-
-                <label>Website URL</label>
-                <input type="url" id="websiteUrl" placeholder="https://example.com">
-
-                <div class="options-grid">
-                    <div class="option-item">
-                        <label>Page Size</label>
-                        <select id="pageSizeUrl">
-                            <option value="a4">A4</option>
-                            <option value="letter">Letter</option>
-                            <option value="legal">Legal</option>
-                            <option value="a3">A3</option>
-                        </select>
-                    </div>
-
-                    <div class="option-item">
-                        <label>Filename</label>
-                        <input type="text" id="filenameUrl" value="webpage.pdf">
-                    </div>
-                </div>
-
-                <button id="convertUrlBtn">
-                    <i class="fas fa-download"></i>
-                    Convert URL to PDF
-                </button>
-            </div>
         </div>
     </div>
 
     <script>
-        // Tab switching
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                
-                this.classList.add('active');
-                const tabId = this.dataset.tab + 'Tab';
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-
         // Templates
         function loadTemplate(type) {
             let template = '';
@@ -585,11 +496,6 @@
             }
         });
 
-        // Convert URL to PDF (Limited functionality due to CORS)
-        document.getElementById('convertUrlBtn').addEventListener('click', function() {
-            showStatus('⚠️ URL conversion is limited due to browser security. For best results, copy the webpage HTML and paste it in the HTML Code tab.', 'error');
-        });
-
         function showStatus(message, type) {
             const status = document.getElementById('status');
             status.textContent = message;
@@ -602,6 +508,8 @@
             }
         }
     </script>
+    <script src="premium-ui.js"></script>
 </body>
 
 </html>
+
