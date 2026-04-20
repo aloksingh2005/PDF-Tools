@@ -12,6 +12,7 @@
     --premium-shadow: 0 16px 50px rgba(2, 6, 23, 0.14);
     --premium-shadow-soft: 0 8px 28px rgba(2, 6, 23, 0.08);
     --premium-radius: 18px;
+    --premium-page-gutter: clamp(10px, 1.35vw, 22px);
     --premium-ease: 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -21,7 +22,7 @@ body.premium-ui {
     position: relative;
     overflow-x: hidden;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: var(--premium-page-gutter) !important;
     min-height: 100vh;
     background:
         radial-gradient(1200px 480px at 5% -8%, rgba(14, 165, 233, 0.22), transparent 60%),
@@ -62,10 +63,10 @@ body.premium-ui > * {
 body.premium-ui .container {
     width: 100% !important;
     max-width: none !important;
-    margin: 0 !important;
-    min-height: 100vh;
-    border-radius: 0 !important;
-    border: 1px solid rgba(255, 255, 255, 0.85);
+    margin: 0 auto !important;
+    min-height: calc(100vh - (var(--premium-page-gutter) * 2));
+    border-radius: 22px !important;
+    border: 1px solid rgba(255, 255, 255, 0.82);
     box-shadow: var(--premium-shadow) !important;
     backdrop-filter: blur(10px);
 }
@@ -74,6 +75,15 @@ body.premium-ui header {
     background: linear-gradient(120deg, #0f766e 0%, #0891b2 55%, #0ea5e9 100%) !important;
     position: relative;
     overflow: hidden;
+}
+
+body.premium-ui header h1,
+body.premium-ui header p {
+    color: #ecfeff !important;
+}
+
+body.premium-ui header p {
+    opacity: 0.95 !important;
 }
 
 body.premium-ui header::after {
@@ -197,8 +207,8 @@ body.premium-ui .back-button:hover {
 
 .premium-floating-home {
     position: fixed;
-    top: 16px;
-    left: 16px;
+    top: calc(var(--premium-page-gutter) + 6px);
+    left: calc(var(--premium-page-gutter) + 6px);
     z-index: 999;
     display: inline-flex;
     align-items: center;
@@ -234,14 +244,18 @@ body.premium-ui .back-button:hover {
 }
 
 @media (max-width: 768px) {
+    body.premium-ui {
+        --premium-page-gutter: 8px;
+    }
+
     .premium-floating-home {
-        top: 10px;
-        left: 10px;
+        top: calc(var(--premium-page-gutter) + 6px);
+        left: calc(var(--premium-page-gutter) + 6px);
         padding: 8px 12px;
         font-size: 0.86em;
     }
 
     body.premium-ui .container {
-        border-radius: 0 !important;
+        border-radius: 14px !important;
     }
 }
